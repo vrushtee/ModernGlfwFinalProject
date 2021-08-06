@@ -143,6 +143,17 @@
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Shader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Test.frag" />
+    <None Include="Test.vs" />
+    <None Include="Test2.frag" />
+    <None Include="Test2.vs" />
+    <None Include="Test3.frag" />
+    <None Include="Test3.vs" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
