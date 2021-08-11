@@ -5,6 +5,6 @@ in vec4 vertexcolor;
 
 void main()  //5 must add paranthesis
 {
-color = vertexcolor;
+color = vec4(0,1,0,1);
 } 
 

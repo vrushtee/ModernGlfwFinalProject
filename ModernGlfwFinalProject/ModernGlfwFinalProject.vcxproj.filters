@@ -31,5 +31,27 @@
     <None Include="Test2.frag" />
     <None Include="Test3.vs" />
     <None Include="Test3.frag" />
+    <None Include="left.frag" />
+    <None Include="right.frag" />
+    <None Include="Texture1.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Texture1.vs">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="1064205.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="wallhaven-odmky9.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="wp4712002-city-anime-wallpapers.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="img1.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
