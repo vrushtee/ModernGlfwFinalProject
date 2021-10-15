@@ -33,10 +33,44 @@
     <None Include="Test3.frag" />
     <None Include="left.frag" />
     <None Include="right.frag" />
+    <None Include="BtmText.vs" />
+    <None Include="BtmText.frag" />
+    <None Include="TopText.vs" />
+    <None Include="TopText.frag" />
+    <None Include="MultiText.vs" />
+    <None Include="MultiText.frag" />
     <None Include="Texture1.frag">
       <Filter>Source Files</Filter>
     </None>
     <None Include="Texture1.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform.vs" />
+    <None Include="transform.frag" />
+    <None Include="triangletsr.vs" />
+    <None Include="triangletsr.frag" />
+    <None Include="strbottom.vs" />
+    <None Include="strbottom.frag" />
+    <None Include="fourBstr.vs" />
+    <None Include="fourBstr.frag" />
+    <None Include="transform1.vs" />
+    <None Include="transform1.frag" />
+    <None Include="transform2.vs" />
+    <None Include="transform2.frag" />
+    <None Include="transform3.vs" />
+    <None Include="transform3.frag" />
+    <None Include="transform4.vs" />
+    <None Include="transform4.frag" />
+    <None Include="topLeft.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="topRight.Frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="topRight.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="topLeft.frag">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
@@ -51,6 +85,24 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="img1.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="val.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="viper.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="kr.JPG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="awesomeface.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="image1.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="image3.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

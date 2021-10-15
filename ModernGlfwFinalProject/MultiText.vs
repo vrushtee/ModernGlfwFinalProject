@@ -7,13 +7,15 @@ layout (location=2) in vec2 texcor;
 out vec3 mycolor;
 out vec2 mytex;
 
+
 void main()  // 4 must add paranthesis
 { 
 //vertexcolor= colorpos;
 //gl_Position = vec4(position,1.0);
 
-mytex= texcor;
+mytex=vec2(texcor.x, texcor.y);
 gl_Position = vec4(position.x,position.y, position.z,1.0);
+
 
 } 
 

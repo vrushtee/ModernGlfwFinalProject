@@ -87,7 +87,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\_OGL_LIB\SOIL_LIB\src;C:\_OGL_LIB\glfw-3.0.4.bin.WIN32\include;C:\_OGL_LIB\glew-1.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\_OGL_LIB\glm;C:\_OGL_LIB\SOIL_LIB\src;C:\_OGL_LIB\glfw-3.0.4.bin.WIN32\include;C:\_OGL_LIB\glew-1.11.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,8 +147,16 @@
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="BtmText.frag" />
+    <None Include="BtmText.vs" />
+    <None Include="fourBstr.frag" />
+    <None Include="fourBstr.vs" />
     <None Include="left.frag" />
+    <None Include="MultiText.frag" />
+    <None Include="MultiText.vs" />
     <None Include="right.frag" />
+    <None Include="strbottom.frag" />
+    <None Include="strbottom.vs" />
     <None Include="Test.frag" />
     <None Include="Test.vs" />
     <None Include="Test2.frag" />
@@ -157,10 +165,34 @@
     <None Include="Test3.vs" />
     <None Include="Texture1.frag" />
     <None Include="Texture1.vs" />
+    <None Include="topLeft.frag" />
+    <None Include="topLeft.vs" />
+    <None Include="topRight.Frag" />
+    <None Include="topRight.vs" />
+    <None Include="TopText.frag" />
+    <None Include="TopText.vs" />
+    <None Include="transform.frag" />
+    <None Include="transform.vs" />
+    <None Include="transform1.frag" />
+    <None Include="transform1.vs" />
+    <None Include="transform2.frag" />
+    <None Include="transform2.vs" />
+    <None Include="transform3.frag" />
+    <None Include="transform3.vs" />
+    <None Include="transform4.frag" />
+    <None Include="transform4.vs" />
+    <None Include="triangletsr.frag" />
+    <None Include="triangletsr.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="1064205.png" />
+    <Image Include="awesomeface.png" />
+    <Image Include="image1.jpg" />
+    <Image Include="image3.jpg" />
     <Image Include="img1.jpg" />
+    <Image Include="kr.JPG" />
+    <Image Include="val.jpg" />
+    <Image Include="viper.png" />
     <Image Include="wallhaven-odmky9.jpg" />
     <Image Include="wp4712002-city-anime-wallpapers.jpg" />
   </ItemGroup>
