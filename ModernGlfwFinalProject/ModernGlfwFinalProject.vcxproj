@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="transform5.vs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BtmText.frag" />
@@ -165,10 +166,6 @@
     <None Include="Test3.vs" />
     <None Include="Texture1.frag" />
     <None Include="Texture1.vs" />
-    <None Include="topLeft.frag" />
-    <None Include="topLeft.vs" />
-    <None Include="topRight.Frag" />
-    <None Include="topRight.vs" />
     <None Include="TopText.frag" />
     <None Include="TopText.vs" />
     <None Include="transform.frag" />
@@ -181,6 +178,11 @@
     <None Include="transform3.vs" />
     <None Include="transform4.frag" />
     <None Include="transform4.vs" />
+    <None Include="transform5.frag" />
+    <None Include="transform6.frag" />
+    <None Include="transform6.vs" />
+    <None Include="transform7.frag" />
+    <None Include="transform7.vs" />
     <None Include="triangletsr.frag" />
     <None Include="triangletsr.vs" />
   </ItemGroup>

@@ -23,6 +23,9 @@
     <ClInclude Include="Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="transform5.vs">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.frag" />
@@ -61,16 +64,19 @@
     <None Include="transform3.frag" />
     <None Include="transform4.vs" />
     <None Include="transform4.frag" />
-    <None Include="topLeft.vs">
+    <None Include="transform5.frag">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="topRight.Frag">
+    <None Include="transform6.vs">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="topRight.vs">
+    <None Include="transform6.frag">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="topLeft.frag">
+    <None Include="transform7.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform7.frag">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
