@@ -183,6 +183,8 @@
     <None Include="transform6.vs" />
     <None Include="transform7.frag" />
     <None Include="transform7.vs" />
+    <None Include="transform8.frag" />
+    <None Include="transform8.vs" />
     <None Include="triangletsr.frag" />
     <None Include="triangletsr.vs" />
   </ItemGroup>

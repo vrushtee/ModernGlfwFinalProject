@@ -79,6 +79,12 @@
     <None Include="transform7.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="transform8.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform8.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="1064205.png">

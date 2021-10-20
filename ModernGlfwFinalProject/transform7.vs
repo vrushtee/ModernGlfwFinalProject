@@ -11,7 +11,7 @@ out vec2 mytex;
 
 //uniform mat4 projection3;
 uniform mat4 model3;
-uniform mat4 transform;
+//uniform mat4 transform3;
 //uniform mat4 view3;
 
 
