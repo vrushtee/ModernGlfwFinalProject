@@ -10372,306 +10372,1664 @@
 //	glfwTerminate();
 //}
 
-
-
-//39 Multiple prism objects
-
-#include<GL/glew.h>
-#include<GLFW/glfw3.h>
-#include<iostream>
-#include<GL\glew.h> 
-#include"Shader.h"
-#include"SOIL2/SOIL2.h"
-#include <glm/glm.hpp>//Graphics Lib for mathematics.
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
-using namespace std;
-
-//vertex shader coding part
-
-
-//fragment shader coding part
-
-
-void main()
-{
-	GLint wid = 2000; //*window variable
-	GLint height1 = 1500; //*window variable
-	GLFWwindow* window; //pointer var as window that will hold address only 
-	glfwInit();
-
-	if (!glfwInit())
-	{
-		cout << "glfw lib error" << endl;
-	}
-	else
-		cout << "glfw success" << endl;
-	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
-
-	// make the window context current
-	glfwMakeContextCurrent(window);
-
-	//**************** here must add glew function use*********
-	if (glewInit() != GLEW_OK)
-	{
-		cout << "fail to open glew\n";
-
-	}
-	else
-		cout << "glew works success\n";
-	// till here glew stuff
-
-
-	//vertex shader 
-
-
-	//fragment shader
-
-
-	//Shader linking of vertex and fragment shader
-
-	//view port
-	glViewport(0, 0, wid, height1);
-
-	glEnable(GL_DEPTH_TEST);
-
-	//Attaching shader Files 
-	Shader shaders("transform8.vs", "transform8.frag");
-
-
-
-	GLfloat vertices[] =
-	{
-		//change vertices as cube and add color too
-		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
-		 0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 0.0f,
-		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
-		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
-		-0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
-
-		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
-		0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 0.0f,
-		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
-		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
-		-0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 1.0f,
-		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
-
-		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
-		-0.5f, 0.5f, -0.5f, 0.0, 0.0, 1.0, 1.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
-		-0.5f, -0.5f, 0.5f, 0.0, 0.0, 1.0, 0.0f, 0.0f,
-		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
-
-		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
-		0.5f, 0.5f, -0.5f, 0.0, 1.0, 1.0, 1.0f, 1.0f,
-		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
-		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
-		0.5f, -0.5f, 0.5f, 0.0, 1.0, 1.0, 0.0f, 0.0f,
-		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
-
-		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
-		0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 1.0f, 1.0f,
-		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
-		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
-		-0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 0.0f, 0.0f,
-		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
-
-		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f,
-		0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 1.0f, 1.0f,
-		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
-		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
-		-0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 0.0f, 0.0f,
-		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f
-		//end
-
-		//		- 1,-1,-1,  //a
-		//-1,-1,1,    //b   //bottom
-		//1,-1,1,     //c
-
-		//1,-1,1,     //c
-		//1,-1,-1,   //d
-		//-1,-1,-1,  //a
-
-		////triangles
-		//-1,-1,1,    //b   
-		//1,-1,1,     //c    //front
-		//0.5,1,-0.5,  //e
-
-		//1,-1,1,     //c
-		//1,-1,-1,   //d     //right
-		//0.5,1,-0.5, //e
-
-		//1,-1,-1,   //d
-		//-1,-1,-1,  //a     //back
-		//0.5,1,-0.5, //e
-
-		//-1,-1,-1,  //a
-		//-1,-1,1,    //b     //left
-		//0.5,1,-0.5, //e
-
-	};
-
-	glm::vec3 objPosition[] =
-	{
-		glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(2.0f, 5.0f, -15.0f),
-		glm::vec3(-1.5f, -2.2f, -2.5f),
-		glm::vec3(-3.8f, -2.0f, -12.3f),
-		glm::vec3(2.4f, -0.4f, -3.5f),
-		glm::vec3(-1.7f, 3.0f, -7.5f),
-		glm::vec3(1.3f, -2.0f, -2.5f),
-		glm::vec3(1.5f, 2.0f, -2.5f),
-		glm::vec3(1.5f, 0.2f, -1.5f),
-		glm::vec3(-1.3f, 1.0f, -1.5f)
-	};
-
-	GLuint VBO, VAO;//vertex buffer obj//vert array obj
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-	//vertices
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
-	glEnableVertexAttribArray(0);
-
-	//color
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(1);
-
-	//texture
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
-	glEnableVertexAttribArray(2);
-
-
-
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-
-
-	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
-	unsigned int texture;
-	glGenTextures(1, &texture);
-	glBindTexture(GL_TEXTURE_2D, texture);
-	//texturing
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	int width, height, nrChannels;
-	unsigned char* image = SOIL_load_image("image1.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-	glGenerateMipmap(GL_TEXTURE_2D);
-	SOIL_free_image_data(image);
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-
-	//texture-2 file manipulation / how to do the texture attachment wth of openGl soil lib.
-	unsigned int texture1;
-	glGenTextures(1, &texture1);
-	glBindTexture(GL_TEXTURE_2D, texture1);
-	//texturing
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	//int width, height, nrChannels;
-	unsigned char* image1 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image1);
-	glGenerateMipmap(GL_TEXTURE_2D);
-	SOIL_free_image_data(image1);
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-
-
-	//gameloop
-	while (!glfwWindowShouldClose(window))
-	{
-		//for the bg color
-		glClearColor(0, 0, 0, 0); //for rgb color change
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//to clear the buffer
-
-		//linking the shader / calling the shader
-		shaders.Use();
-		glUniform1i(glGetUniformLocation(shaders.Program, "Texture11"), 0);
-		glUniform1i(glGetUniformLocation(shaders.Program, "Texture22"), 1);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texture);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, texture1);
-
-		//trabsaltion
-		//glm::mat4 model = glm::mat4(1.0f);
-		//model = glm::translate(model, glm::vec3(-0.9, -0.8, -3.0));
-
-		//view
-		glm::mat4 view = glm::mat4(1.0f);
-		//without sin/tan angle
-		//view = glm::rotate(view, glm::radians(-75.0f), glm::vec3(1.0, 0, 0.0)); 
-
-		//with sin/tan angle
-		view = glm::translate(view, glm::vec3(0.0, 0.0, -7.0));
-
-		//scale
-		glm::mat4 projection;
-		projection = glm::perspective(glm::radians(100.0f), (float)wid / (float)height1, 0.1f, 100.0f);
-
-		//get the uniform data from the vs shader file
-		//translation data fetch from shaders
-		//unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
-		//glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
-
-		//view data fetch from shaders
-		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
-		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
-
-		//scale data fetch from shaders
-		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
-		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
-
-		//must pass parameter vao to see visibility of drawing 
-		glBindVertexArray(VAO);
-
-		for (unsigned int i = 1; i <= 10; i++)
-		{
-			glm::mat4 model = glm::mat4(1.0f);
-			model = glm::translate(model, objPosition[i]);
-			float angle = 18.0 * i;
-			if (angle == 0)
-			{
-				angle = 40.0;
-			}
-			model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, -1.0f));
-			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
-			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.1f, 0.0f));
-			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, -0.1f, 0.0f));
-			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.1f, 0.0f, 0.0f));
-			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(-0.1f, 0.0f, 0.0f));
-
-
-
-			unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
-			glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-		}
-
-
-		//drawing
-		//glDrawArrays(GL_TRIANGLES, 0, 36);
-		//glBindVertexArray();
-
-		glfwSwapBuffers(window);//to swap the new color for window
-		glfwPollEvents();
-	}
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glfwTerminate();
-}
+//39 Whatever the last outcome you have make it full interactive with keys
+//	1. Rotate by keys clockwiseand anti clockwise in z - axis only
+//	2. Move by the keys LRTB
+//	3. Zoom in & Zoom out
+//	4. All above 3 together
+
+
+//	1. Rotate by keys clockwiseand anti clockwise in z - axis only
+
+//#include<GL/glew.h>
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include<GL\glew.h> 
+//#include"Shader.h"
+//#include"SOIL2/SOIL2.h"
+//#include <glm/glm.hpp>//Graphics Lib for mathematics.
+//#include <glm/gtc/matrix_transform.hpp>
+//#include <glm/gtc/type_ptr.hpp>
+//
+//using namespace std;
+//
+////vertex shader coding part
+////fragment shader coding part
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods); //step 1: added keycall
+//
+//GLfloat rotationx = 0.0f; //step 2: for rotating in x axis
+//GLfloat rotationy = 0.0f; //step 2: for rotating in y axis
+//
+//void main()
+//{
+//	GLint wid = 2000; //*window variable
+//	GLint height1 = 1500; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw lib error" << endl;
+//	}
+//	else
+//		cout << "glfw success" << endl;
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//	glfwSetKeyCallback(window, keyCall); //step 3: gave keycallback
+//
+//	//**************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	//vertex shader 
+//
+//
+//	//fragment shader
+//
+//
+//	//Shader linking of vertex and fragment shader
+//
+//	//view port
+//	glViewport(0, 0, wid, height1);
+//
+//	glEnable(GL_DEPTH_TEST);
+//
+//	//Attaching shader Files 
+//	Shader shaders("transform8.vs", "transform8.frag");
+//
+//
+//
+//	GLfloat vertices[] =
+//	{
+//		//change vertices as cube and add color too
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//		 0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 0.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		-0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 0.0, 0.0, 1.0, 1.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, -0.5f, 0.0, 1.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 1.0, 0.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f,
+//		0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f
+//		//end
+//
+//		//		- 1,-1,-1,  //a
+//		//-1,-1,1,    //b   //bottom
+//		//1,-1,1,     //c
+//
+//		//1,-1,1,     //c
+//		//1,-1,-1,   //d
+//		//-1,-1,-1,  //a
+//
+//		////triangles
+//		//-1,-1,1,    //b   
+//		//1,-1,1,     //c    //front
+//		//0.5,1,-0.5,  //e
+//
+//		//1,-1,1,     //c
+//		//1,-1,-1,   //d     //right
+//		//0.5,1,-0.5, //e
+//
+//		//1,-1,-1,   //d
+//		//-1,-1,-1,  //a     //back
+//		//0.5,1,-0.5, //e
+//
+//		//-1,-1,-1,  //a
+//		//-1,-1,1,    //b     //left
+//		//0.5,1,-0.5, //e
+//
+//	};
+//
+//	glm::vec3 objPosition[] =
+//	{
+//		glm::vec3(0.0f, 0.0f, 0.0f),
+//		glm::vec3(2.0f, 5.0f, -15.0f),
+//		glm::vec3(-1.5f, -2.2f, -2.5f),
+//		glm::vec3(-3.8f, -2.0f, -12.3f),
+//		glm::vec3(2.4f, -0.4f, -3.5f),
+//		glm::vec3(-1.7f, 3.0f, -7.5f),
+//		glm::vec3(1.3f, -2.0f, -2.5f),
+//		glm::vec3(1.5f, 2.0f, -2.5f),
+//		glm::vec3(1.5f, 0.2f, -1.5f),
+//		glm::vec3(-1.3f, 1.0f, -1.5f)
+//	};
+//
+//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//
+//	//vertices
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//
+//	//color
+//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(1);
+//
+//	//texture
+//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//
+//
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture;
+//	glGenTextures(1, &texture);
+//	glBindTexture(GL_TEXTURE_2D, texture);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width, height, nrChannels;
+//	unsigned char* image = SOIL_load_image("image1.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//texture-2 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture1;
+//	glGenTextures(1, &texture1);
+//	glBindTexture(GL_TEXTURE_2D, texture1);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	//int width, height, nrChannels;
+//	unsigned char* image1 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image1);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image1);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0, 0, 0, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//to clear the buffer
+//
+//		//linking the shader / calling the shader
+//		shaders.Use();
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture11"), 0);
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture22"), 1);
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glActiveTexture(GL_TEXTURE1);
+//		glBindTexture(GL_TEXTURE_2D, texture1);
+//
+//		//trabsaltion
+//		//glm::mat4 model = glm::mat4(1.0f);
+//		//model = glm::translate(model, glm::vec3(-0.9, -0.8, -3.0));
+//
+//		//view
+//		glm::mat4 view = glm::mat4(1.0f);
+//		//without sin/tan angle
+//		//view = glm::rotate(view, glm::radians(-75.0f), glm::vec3(1.0, 0, 0.0)); 
+//
+//		//with sin/tan angle
+//		view = glm::translate(view, glm::vec3(0.0, 0.0, -7.0));
+//
+//		//scale
+//		glm::mat4 projection;
+//		projection = glm::perspective(glm::radians(100.0f), (float)wid / (float)height1, 0.1f, 100.0f);
+//
+//		//get the uniform data from the vs shader file
+//		//translation data fetch from shaders
+//		//unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//		//glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//
+//		//view data fetch from shaders
+//		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
+//		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
+//
+//		//scale data fetch from shaders
+//		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
+//		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
+//
+//		//must pass parameter vao to see visibility of drawing 
+//		glBindVertexArray(VAO);
+//
+//		for (unsigned int i = 1; i <= 10; i++)
+//		{
+//			glm::mat4 model = glm::mat4(1.0f);
+//			model = glm::translate(model, objPosition[i]);
+//			//model = glm::translate(model, glm::vec3(0.0 + transx, 0.0 + transy, 0));
+//			float angle = 18.0 * i;
+//			if (angle == 0)
+//			{
+//				angle = 40.0;
+//			}
+//			model = glm::rotate(model, glm::radians(angle) * rotationx, glm::vec3(0.0f , 0.0f, -1.0f));
+//			//view = glm::rotate(view, glm::radians(-55.0f), glm::vec3(rotationx, rotationy, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.1f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, -0.1f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.1f, 0.0f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(-0.1f, 0.0f, 0.0f));
+//
+//
+//
+//			unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//			glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//			glDrawArrays(GL_TRIANGLES, 0, 36);
+//		}
+//
+//
+//		//drawing
+//		//glDrawArrays(GL_TRIANGLES, 0, 36);
+//		//glBindVertexArray();
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods) //step 4: assigned keys in keycallback
+//{
+//	const GLfloat rotationSpeed = 1;
+//	if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//	{
+//		//scale factor conditions, boundaries for zoom in zoom out of the object
+//
+//		switch (key)
+//		{
+//		case GLFW_KEY_W:
+//			rotationy += rotationSpeed;
+//			break;
+//		case GLFW_KEY_S:
+//			rotationy -= rotationSpeed;
+//			break;
+//		case GLFW_KEY_D:
+//			rotationx += rotationSpeed;
+//			break;
+//		case GLFW_KEY_A:
+//			rotationx -= rotationSpeed;
+//			break;
+//		}
+//
+//	}
+//}
+
+
+//	2. Move by the keys LRTB
+
+//#include<GL/glew.h>
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include<GL\glew.h> 
+//#include"Shader.h"
+//#include"SOIL2/SOIL2.h"
+//#include <glm/glm.hpp>//Graphics Lib for mathematics.
+//#include <glm/gtc/matrix_transform.hpp>
+//#include <glm/gtc/type_ptr.hpp>
+//
+//using namespace std;
+//
+////vertex shader coding part
+////fragment shader coding part
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods); //step 1: added keycall
+//
+//GLfloat transx = 0; //  step 2: for translation in x axis
+//GLfloat transy = 0; //  step2: for translation in y axis
+//
+//void main()
+//{
+//	GLint wid = 2000; //*window variable
+//	GLint height1 = 1500; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw lib error" << endl;
+//	}
+//	else
+//		cout << "glfw success" << endl;
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//	glfwSetKeyCallback(window, keyCall); //step 3: gave keycallback
+//
+//	//**************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	//vertex shader 
+//
+//
+//	//fragment shader
+//
+//
+//	//Shader linking of vertex and fragment shader
+//
+//	//view port
+//	glViewport(0, 0, wid, height1);
+//
+//	glEnable(GL_DEPTH_TEST);
+//
+//	//Attaching shader Files 
+//	Shader shaders("transform8.vs", "transform8.frag");
+//
+//
+//
+//	GLfloat vertices[] =
+//	{
+//		//change vertices as cube and add color too
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//		 0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 0.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		-0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 0.0, 0.0, 1.0, 1.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, -0.5f, 0.0, 1.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 1.0, 0.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f,
+//		0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f
+//		//end
+//
+//		//		- 1,-1,-1,  //a
+//		//-1,-1,1,    //b   //bottom
+//		//1,-1,1,     //c
+//
+//		//1,-1,1,     //c
+//		//1,-1,-1,   //d
+//		//-1,-1,-1,  //a
+//
+//		////triangles
+//		//-1,-1,1,    //b   
+//		//1,-1,1,     //c    //front
+//		//0.5,1,-0.5,  //e
+//
+//		//1,-1,1,     //c
+//		//1,-1,-1,   //d     //right
+//		//0.5,1,-0.5, //e
+//
+//		//1,-1,-1,   //d
+//		//-1,-1,-1,  //a     //back
+//		//0.5,1,-0.5, //e
+//
+//		//-1,-1,-1,  //a
+//		//-1,-1,1,    //b     //left
+//		//0.5,1,-0.5, //e
+//
+//	};
+//
+//	glm::vec3 objPosition[] =
+//	{
+//		glm::vec3(0.0f, 0.0f, 0.0f),
+//		glm::vec3(2.0f, 5.0f, -15.0f),
+//		glm::vec3(-1.5f, -2.2f, -2.5f),
+//		glm::vec3(-3.8f, -2.0f, -12.3f),
+//		glm::vec3(2.4f, -0.4f, -3.5f),
+//		glm::vec3(-1.7f, 3.0f, -7.5f),
+//		glm::vec3(1.3f, -2.0f, -2.5f),
+//		glm::vec3(1.5f, 2.0f, -2.5f),
+//		glm::vec3(1.5f, 0.2f, -1.5f),
+//		glm::vec3(-1.3f, 1.0f, -1.5f)
+//	};
+//
+//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//
+//	//vertices
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//
+//	//color
+//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(1);
+//
+//	//texture
+//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//
+//
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture;
+//	glGenTextures(1, &texture);
+//	glBindTexture(GL_TEXTURE_2D, texture);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width, height, nrChannels;
+//	unsigned char* image = SOIL_load_image("image1.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//texture-2 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture1;
+//	glGenTextures(1, &texture1);
+//	glBindTexture(GL_TEXTURE_2D, texture1);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	//int width, height, nrChannels;
+//	unsigned char* image1 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image1);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image1);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0, 0, 0, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//to clear the buffer
+//
+//		//linking the shader / calling the shader
+//		shaders.Use();
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture11"), 0);
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture22"), 1);
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glActiveTexture(GL_TEXTURE1);
+//		glBindTexture(GL_TEXTURE_2D, texture1);
+//
+//		//trabsaltion
+//		//glm::mat4 model = glm::mat4(1.0f);
+//		//model = glm::translate(model, glm::vec3(-0.9, -0.8, -3.0));
+//
+//		//view
+//		glm::mat4 view = glm::mat4(1.0f);
+//		//without sin/tan angle
+//		//view = glm::rotate(view, glm::radians(-75.0f), glm::vec3(1.0, 0, 0.0)); 
+//
+//		//with sin/tan angle
+//		view = glm::translate(view, glm::vec3(0.0, 0.0, -7.0));
+//
+//		//scale
+//		glm::mat4 projection;
+//		projection = glm::perspective(glm::radians(100.0f), (float)wid / (float)height1, 0.1f, 100.0f);
+//
+//		//get the uniform data from the vs shader file
+//		//translation data fetch from shaders
+//		//unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//		//glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//
+//		//view data fetch from shaders
+//		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
+//		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
+//
+//		//scale data fetch from shaders
+//		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
+//		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
+//
+//		//must pass parameter vao to see visibility of drawing 
+//		glBindVertexArray(VAO);
+//
+//		for (unsigned int i = 1; i <= 10; i++)
+//		{
+//			glm::mat4 model = glm::mat4(1.0f);
+//			model = glm::translate(model, objPosition[i]);
+//			model = glm::translate(model,glm::vec3(0.0 + transx, 0.0 + transy, 0));
+//			float angle = 18.0 * i;
+//			if (angle == 0)
+//			{
+//				angle = 40.0;
+//			}
+//			model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, -1.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.1f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, -0.1f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.1f, 0.0f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(-0.1f, 0.0f, 0.0f));
+//
+//
+//
+//			unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//			glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//			glDrawArrays(GL_TRIANGLES, 0, 36);
+//		}
+//
+//
+//		//drawing
+//		//glDrawArrays(GL_TRIANGLES, 0, 36);
+//		//glBindVertexArray();
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods) //step 4: assigned keys in keycallback
+//{
+//	const GLfloat trans = 0.1;
+//	if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//	{
+//		switch (key)
+//		{
+//
+//		case GLFW_KEY_W:
+//			transy += trans;
+//			break;
+//
+//		case GLFW_KEY_S:
+//			transy -= trans;
+//			break;
+//
+//		case GLFW_KEY_A:
+//			transx -= trans;
+//			break;
+//
+//		case GLFW_KEY_D:
+//			transx += trans;
+//			break;
+//
+//		default:
+//			break;
+//		}
+//	}
+//}
+
+
+//	3. Zoom in & Zoom out (doubt)
+
+//#include<GL/glew.h>
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include<GL\glew.h> 
+//#include"Shader.h"
+//#include"SOIL2/SOIL2.h"
+//#include <glm/glm.hpp>//Graphics Lib for mathematics.
+//#include <glm/gtc/matrix_transform.hpp>
+//#include <glm/gtc/type_ptr.hpp>
+//
+//using namespace std;
+//
+////vertex shader coding part
+////fragment shader coding part
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods); //step 1: added keycall
+//
+//GLfloat scalefactor = 1.0f; //step 2: for scaling
+//GLboolean scaleUp = false;
+//
+//void main()
+//{
+//	GLint wid = 2000; //*window variable
+//	GLint height1 = 1500; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw lib error" << endl;
+//	}
+//	else
+//		cout << "glfw success" << endl;
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//	glfwSetKeyCallback(window, keyCall); //step 3: gave keycallback
+//
+//	//**************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	//vertex shader 
+//
+//
+//	//fragment shader
+//
+//
+//	//Shader linking of vertex and fragment shader
+//
+//	//view port
+//	glViewport(0, 0, wid, height1);
+//
+//	glEnable(GL_DEPTH_TEST);
+//
+//	//Attaching shader Files 
+//	Shader shaders("transform8.vs", "transform8.frag");
+//
+//
+//
+//	GLfloat vertices[] =
+//	{
+//		//change vertices as cube and add color too
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//		 0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 0.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		-0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 0.0, 0.0, 1.0, 1.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, -0.5f, 0.0, 1.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 1.0, 0.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f,
+//		0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f
+//		//end
+//
+//		//		- 1,-1,-1,  //a
+//		//-1,-1,1,    //b   //bottom
+//		//1,-1,1,     //c
+//
+//		//1,-1,1,     //c
+//		//1,-1,-1,   //d
+//		//-1,-1,-1,  //a
+//
+//		////triangles
+//		//-1,-1,1,    //b   
+//		//1,-1,1,     //c    //front
+//		//0.5,1,-0.5,  //e
+//
+//		//1,-1,1,     //c
+//		//1,-1,-1,   //d     //right
+//		//0.5,1,-0.5, //e
+//
+//		//1,-1,-1,   //d
+//		//-1,-1,-1,  //a     //back
+//		//0.5,1,-0.5, //e
+//
+//		//-1,-1,-1,  //a
+//		//-1,-1,1,    //b     //left
+//		//0.5,1,-0.5, //e
+//
+//	};
+//
+//	glm::vec3 objPosition[] =
+//	{
+//		glm::vec3(0.0f, 0.0f, 0.0f),
+//		glm::vec3(2.0f, 5.0f, -15.0f),
+//		glm::vec3(-1.5f, -2.2f, -2.5f),
+//		glm::vec3(-3.8f, -2.0f, -12.3f),
+//		glm::vec3(2.4f, -0.4f, -3.5f),
+//		glm::vec3(-1.7f, 3.0f, -7.5f),
+//		glm::vec3(1.3f, -2.0f, -2.5f),
+//		glm::vec3(1.5f, 2.0f, -2.5f),
+//		glm::vec3(1.5f, 0.2f, -1.5f),
+//		glm::vec3(-1.3f, 1.0f, -1.5f)
+//	};
+//
+//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//
+//	//vertices
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//
+//	//color
+//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(1);
+//
+//	//texture
+//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//
+//
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture;
+//	glGenTextures(1, &texture);
+//	glBindTexture(GL_TEXTURE_2D, texture);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width, height, nrChannels;
+//	unsigned char* image = SOIL_load_image("image1.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//texture-2 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture1;
+//	glGenTextures(1, &texture1);
+//	glBindTexture(GL_TEXTURE_2D, texture1);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	//int width, height, nrChannels;
+//	unsigned char* image1 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image1);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image1);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0, 0, 0, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//to clear the buffer
+//
+//		//linking the shader / calling the shader
+//		shaders.Use();
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture11"), 0);
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture22"), 1);
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glActiveTexture(GL_TEXTURE1);
+//		glBindTexture(GL_TEXTURE_2D, texture1);
+//
+//		//trabsaltion
+//		//glm::mat4 model = glm::mat4(1.0f);
+//		//model = glm::translate(model, glm::vec3(-0.9, -0.8, -3.0));
+//
+//		//view
+//		glm::mat4 view = glm::mat4(1.0f);
+//		//without sin/tan angle
+//		//view = glm::rotate(view, glm::radians(-75.0f), glm::vec3(1.0, 0, 0.0)); 
+//
+//		//with sin/tan angle
+//		view = glm::translate(view, glm::vec3(0.0, 0.0, -7.0));
+//
+//		//scale
+//		glm::mat4 projection;
+//		projection = glm::perspective(glm::radians(100.0f), (float)wid / (float)height1, 0.1f, 100.0f);
+//
+//		//get the uniform data from the vs shader file
+//		//translation data fetch from shaders
+//		//unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//		//glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//
+//		//view data fetch from shaders
+//		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
+//		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
+//
+//		//scale data fetch from shaders
+//		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
+//		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
+//
+//		//must pass parameter vao to see visibility of drawing 
+//		glBindVertexArray(VAO);
+//
+//		for (unsigned int i = 1; i <= 10; i++)
+//		{
+//			glm::mat4 model = glm::mat4(1.0f);
+//			model = glm::translate(model, objPosition[i]);
+////			model = glm::translate(model,glm::vec3(scalefactor, scalefactor, scalefactor));
+////		projection = glm::scale(projection, glm::vec3(scalefactor, scalefactor, scalefactor));
+//
+//			float angle = 18.0 * i;
+//			if (angle == 0)
+//			{
+//				angle = 40.0;
+//			}
+//			model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, -1.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.1f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, -0.1f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.1f, 0.0f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(-0.1f, 0.0f, 0.0f));
+//
+//
+//
+//			unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//			glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//			glDrawArrays(GL_TRIANGLES, 0, 36);
+//		}
+//
+//
+//		//drawing
+//		//glDrawArrays(GL_TRIANGLES, 0, 36);
+//		//glBindVertexArray();
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods) //step 4: assigned keys in keycallback
+//{
+//	const GLfloat trans = 1;
+//	if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//	{
+//		//scale factor conditions, boundaries for zoom in zoom out of the object
+//
+//
+//
+//		switch (key)
+//		{
+//		case GLFW_KEY_W:
+//		{
+//
+//			if (scalefactor <= 2.0)
+//			{
+//				scalefactor += 0.01;
+//			}
+//			else
+//				scaleUp = false;
+//			break;
+//		}
+//		case GLFW_KEY_S:
+//		{
+//
+//			if (scalefactor >= 0.5)
+//			{
+//				scalefactor -= 0.01;
+//
+//			}
+//			else
+//				scaleUp = true;
+//			break;
+//		}
+//
+//		}
+//
+//	}
+//}
+
+
+//	4. All above 3 together
+
+//#include<GL/glew.h>
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include<GL\glew.h> 
+//#include"Shader.h"
+//#include"SOIL2/SOIL2.h"
+//#include <glm/glm.hpp>//Graphics Lib for mathematics.
+//#include <glm/gtc/matrix_transform.hpp>
+//#include <glm/gtc/type_ptr.hpp>
+//
+//using namespace std;
+//
+////vertex shader coding part
+////fragment shader coding part
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods); //step 1: added keycall
+//
+//GLfloat rotationx = 0.0f; //step 2: for rotating in x axis
+//
+//GLfloat transx = 0; //  step 2: for translation in x axis
+//GLfloat transy = 0; //  step2: for translation in y axis
+//
+//void main()
+//{
+//	GLint wid = 2000; //*window variable
+//	GLint height1 = 1500; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw lib error" << endl;
+//	}
+//	else
+//		cout << "glfw success" << endl;
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//	glfwSetKeyCallback(window, keyCall); //step 3: gave keycallback
+//
+//	//**************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	//vertex shader 
+//
+//
+//	//fragment shader
+//
+//
+//	//Shader linking of vertex and fragment shader
+//
+//	//view port
+//	glViewport(0, 0, wid, height1);
+//
+//	glEnable(GL_DEPTH_TEST);
+//
+//	//Attaching shader Files 
+//	Shader shaders("transform8.vs", "transform8.frag");
+//
+//
+//
+//	GLfloat vertices[] =
+//	{
+//		//change vertices as cube and add color too
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//		 0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 0.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		-0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 0.0, 0.0, 1.0, 1.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, -0.5f, 0.0, 1.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 1.0, 0.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f,
+//		0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f
+//		//end
+//
+//		//		- 1,-1,-1,  //a
+//		//-1,-1,1,    //b   //bottom
+//		//1,-1,1,     //c
+//
+//		//1,-1,1,     //c
+//		//1,-1,-1,   //d
+//		//-1,-1,-1,  //a
+//
+//		////triangles
+//		//-1,-1,1,    //b   
+//		//1,-1,1,     //c    //front
+//		//0.5,1,-0.5,  //e
+//
+//		//1,-1,1,     //c
+//		//1,-1,-1,   //d     //right
+//		//0.5,1,-0.5, //e
+//
+//		//1,-1,-1,   //d
+//		//-1,-1,-1,  //a     //back
+//		//0.5,1,-0.5, //e
+//
+//		//-1,-1,-1,  //a
+//		//-1,-1,1,    //b     //left
+//		//0.5,1,-0.5, //e
+//
+//	};
+//
+//	glm::vec3 objPosition[] =
+//	{
+//		glm::vec3(0.0f, 0.0f, 0.0f),
+//		glm::vec3(2.0f, 5.0f, -15.0f),
+//		glm::vec3(-1.5f, -2.2f, -2.5f),
+//		glm::vec3(-3.8f, -2.0f, -12.3f),
+//		glm::vec3(2.4f, -0.4f, -3.5f),
+//		glm::vec3(-1.7f, 3.0f, -7.5f),
+//		glm::vec3(1.3f, -2.0f, -2.5f),
+//		glm::vec3(1.5f, 2.0f, -2.5f),
+//		glm::vec3(1.5f, 0.2f, -1.5f),
+//		glm::vec3(-1.3f, 1.0f, -1.5f)
+//	};
+//
+//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//
+//	//vertices
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//
+//	//color
+//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(1);
+//
+//	//texture
+//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//
+//
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture;
+//	glGenTextures(1, &texture);
+//	glBindTexture(GL_TEXTURE_2D, texture);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width, height, nrChannels;
+//	unsigned char* image = SOIL_load_image("image1.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//texture-2 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture1;
+//	glGenTextures(1, &texture1);
+//	glBindTexture(GL_TEXTURE_2D, texture1);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	//int width, height, nrChannels;
+//	unsigned char* image1 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image1);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image1);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0, 0, 0, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//to clear the buffer
+//
+//		//linking the shader / calling the shader
+//		shaders.Use();
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture11"), 0);
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture22"), 1);
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glActiveTexture(GL_TEXTURE1);
+//		glBindTexture(GL_TEXTURE_2D, texture1);
+//
+//		//trabsaltion
+//		//glm::mat4 model = glm::mat4(1.0f);
+//		//model = glm::translate(model, glm::vec3(-0.9, -0.8, -3.0));
+//
+//		//view
+//		glm::mat4 view = glm::mat4(1.0f);
+//		//without sin/tan angle
+//		//view = glm::rotate(view, glm::radians(-75.0f), glm::vec3(1.0, 0, 0.0)); 
+//
+//		//with sin/tan angle
+//		view = glm::translate(view, glm::vec3(0.0, 0.0, -7.0));
+//
+//		//scale
+//		glm::mat4 projection;
+//		projection = glm::perspective(glm::radians(100.0f), (float)wid / (float)height1, 0.1f, 100.0f);
+//
+//		//get the uniform data from the vs shader file
+//		//translation data fetch from shaders
+//		//unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//		//glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//
+//		//view data fetch from shaders
+//		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
+//		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
+//
+//		//scale data fetch from shaders
+//		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
+//		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
+//
+//		//must pass parameter vao to see visibility of drawing 
+//		glBindVertexArray(VAO);
+//
+//		for (unsigned int i = 1; i <= 10; i++)
+//		{
+//			glm::mat4 model = glm::mat4(1.0f);
+//			model = glm::translate(model, objPosition[i]);
+//			model = glm::translate(model, glm::vec3(0.0 + transx, 0.0 + transy, 0));
+//			float angle = 18.0 * i;
+//			if (angle == 0)
+//			{
+//				angle = 40.0;
+//			}
+//			model = glm::rotate(model, glm::radians(angle) * rotationx, glm::vec3(0.0f , 0.0f, -1.0f));
+//			//view = glm::rotate(view, glm::radians(-55.0f), glm::vec3(rotationx, rotationy, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.1f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, -0.1f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.1f, 0.0f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(-0.1f, 0.0f, 0.0f));
+//
+//
+//
+//			unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//			glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//			glDrawArrays(GL_TRIANGLES, 0, 36);
+//		}
+//
+//
+//		//drawing
+//		//glDrawArrays(GL_TRIANGLES, 0, 36);
+//		//glBindVertexArray();
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
+//
+//void keyCall(GLFWwindow* window, int key, int scancode, int action, int mods) //step 4: assigned keys in keycallback
+//{
+//	const GLfloat rotationSpeed = 1;
+//	if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//	{
+//		//scale factor conditions, boundaries for zoom in zoom out of the object
+//
+//		switch (key)
+//		{
+//		case GLFW_KEY_D:
+//			rotationx += rotationSpeed;
+//			break;
+//		case GLFW_KEY_A:
+//			rotationx -= rotationSpeed;
+//			break;
+//		}
+//
+//	}
+//
+//	const GLfloat trans = 0.1;
+//		if (action == GLFW_PRESS || action == GLFW_REPEAT)
+//		{
+//			switch (key)
+//			{
+//	
+//			case GLFW_KEY_U:
+//				transy += trans;
+//				break;
+//	
+//			case GLFW_KEY_J:
+//				transy -= trans;
+//				break;
+//	
+//			case GLFW_KEY_H:
+//				transx -= trans;
+//				break;
+//	
+//			case GLFW_KEY_K:
+//				transx += trans;
+//				break;
+//	
+//			default:
+//				break;
+//			}
+//		}
+//}
+
+
+
+// 40 Must check the 3d triangle data in the same outcome
+
+//#include<GL/glew.h>
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include<GL\glew.h> 
+//#include"Shader.h"
+//#include"SOIL2/SOIL2.h"
+//#include <glm/glm.hpp>//Graphics Lib for mathematics.
+//#include <glm/gtc/matrix_transform.hpp>
+//#include <glm/gtc/type_ptr.hpp>
+//
+//using namespace std;
+//
+////vertex shader coding part
+//
+//
+////fragment shader coding part
+//
+//
+//void main()
+//{
+//	GLint wid = 2000; //*window variable
+//	GLint height1 = 1500; //*window variable
+//	GLFWwindow* window; //pointer var as window that will hold address only 
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw lib error" << endl;
+//	}
+//	else
+//		cout << "glfw success" << endl;
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); //*assigned window variable 
+//
+//	// make the window context current
+//	glfwMakeContextCurrent(window);
+//
+//	//**************** here must add glew function use*********
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//	// till here glew stuff
+//
+//
+//	//vertex shader 
+//
+//
+//	//fragment shader
+//
+//
+//	//Shader linking of vertex and fragment shader
+//
+//	//view port
+//	glViewport(0, 0, wid, height1);
+//
+//	glEnable(GL_DEPTH_TEST);
+//
+//	//Attaching shader Files 
+//	Shader shaders("transform8.vs", "transform8.frag");
+//
+//
+//
+//	GLfloat vertices[] =
+//	{
+//		//change vertices as cube and add color too
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//		 0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 0.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		 0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 1.0f, 1.0f,
+//		-0.5f,  0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 1.0f, 1.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 1.0, 0.0, 0.0f, 0.0f,
+//
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 0.0, 0.0, 1.0, 1.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, -0.5f, 0.0, 0.0, 1.0, 0.0f, 1.0f,
+//		-0.5f, -0.5f, 0.5f, 0.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 0.0, 0.0, 1.0, 1.0f, 0.0f,
+//
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, -0.5f, 0.0, 1.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 0.0, 1.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 0.0, 1.0, 1.0, 0.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 0.0, 1.0, 1.0, 1.0f, 0.0f,
+//
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//		0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 1.0f, 1.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 1.0f, 0.0f,
+//		-0.5f, -0.5f, 0.5f, 1.0, 0.0, 1.0, 0.0f, 0.0f,
+//		-0.5f, -0.5f, -0.5f, 1.0, 0.0, 1.0, 0.0f, 1.0f,
+//
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f,
+//		0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 1.0f, 1.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 1.0f, 0.0f,
+//		-0.5f, 0.5f, 0.5f, 1.0, 1.0, 0.0, 0.0f, 0.0f,
+//		-0.5f, 0.5f, -0.5f, 1.0, 1.0, 0.0, 0.0f, 1.0f
+//		//end
+//
+//	};
+//
+//	glm::vec3 objPosition[] =
+//	{ 
+//		glm::vec3(0.0f, 0.0f, 0.0f),
+//		glm::vec3(2.0f, 5.0f, -15.0f),
+//		glm::vec3(-1.5f, -2.2f, -2.5f),
+//		glm::vec3(-3.8f, -2.0f, -12.3f),
+//		glm::vec3(2.4f, -0.4f, -3.5f),
+//		glm::vec3(-1.7f, 3.0f, -7.5f),
+//		glm::vec3(1.3f, -2.0f, -2.5f),
+//		glm::vec3(1.5f, 2.0f, -2.5f),
+//		glm::vec3(1.5f, 0.2f, -1.5f),
+//		glm::vec3(-1.3f, 1.0f, -1.5f)
+//	};
+//
+//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//
+//	//vertices
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//
+//	//color
+//	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(1);
+//
+//	//texture
+//	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+//	glEnableVertexAttribArray(2);
+//
+//
+//
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//
+//	//texture-1 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture;
+//	glGenTextures(1, &texture);
+//	glBindTexture(GL_TEXTURE_2D, texture);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	int width, height, nrChannels;
+//	unsigned char* image = SOIL_load_image("image1.jpg", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//	//texture-2 file manipulation / how to do the texture attachment wth of openGl soil lib.
+//	unsigned int texture1;
+//	glGenTextures(1, &texture1);
+//	glBindTexture(GL_TEXTURE_2D, texture1);
+//	//texturing
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+//
+//	//int width, height, nrChannels;
+//	unsigned char* image1 = SOIL_load_image("awesomeface.png", &width, &height, 0, SOIL_LOAD_RGBA);
+//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image1);
+//	glGenerateMipmap(GL_TEXTURE_2D);
+//	SOIL_free_image_data(image1);
+//	glBindTexture(GL_TEXTURE_2D, 0);
+//
+//
+//
+//	//gameloop
+//	while (!glfwWindowShouldClose(window))
+//	{
+//		//for the bg color
+//		glClearColor(0, 0, 0, 0); //for rgb color change
+//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//to clear the buffer
+//
+//		//linking the shader / calling the shader
+//		shaders.Use();
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture11"), 0);
+//		glUniform1i(glGetUniformLocation(shaders.Program, "Texture22"), 1);
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glActiveTexture(GL_TEXTURE1);
+//		glBindTexture(GL_TEXTURE_2D, texture1);
+//
+//		//trabsaltion
+//		//glm::mat4 model = glm::mat4(1.0f);
+//		//model = glm::translate(model, glm::vec3(-0.9, -0.8, -3.0));
+//
+//		//view
+//		glm::mat4 view = glm::mat4(1.0f);
+//		//without sin/tan angle
+//		//view = glm::rotate(view, glm::radians(-75.0f), glm::vec3(1.0, 0, 0.0)); 
+//
+//		//with sin/tan angle
+//		view = glm::translate(view, glm::vec3(0.0, 0.0, -7.0));
+//
+//		//scale
+//		glm::mat4 projection;
+//		projection = glm::perspective(glm::radians(100.0f), (float)wid / (float)height1, 0.1f, 100.0f);
+//
+//		//get the uniform data from the vs shader file
+//		//translation data fetch from shaders
+//		//unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//		//glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//
+//		//view data fetch from shaders
+//		unsigned int viewacces = glGetUniformLocation(shaders.Program, "view");
+//		glUniformMatrix4fv(viewacces, 1, GL_FALSE, glm::value_ptr(view));
+//
+//		//scale data fetch from shaders
+//		unsigned int scaleacces = glGetUniformLocation(shaders.Program, "projection");
+//		glUniformMatrix4fv(scaleacces, 1, GL_FALSE, glm::value_ptr(projection));
+//
+//		//must pass parameter vao to see visibility of drawing 
+//		glBindVertexArray(VAO);
+//
+//		for (unsigned int i=1; i<=10; i++) 
+//		{
+//			glm::mat4 model = glm::mat4(1.0f);
+//			model = glm::translate(model, objPosition[i]);
+//			float angle = 18.0*i;
+//			if (angle == 0)
+//			{
+//				angle = 40.0;
+//			}
+//			model= glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, -1.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, 0.1f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.0f, -0.1f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(0.1f, 0.0f, 0.0f));
+//			//model = glm::rotate(model, (float)glfwGetTime() * glm::radians(angle), glm::vec3(-0.1f, 0.0f, 0.0f));
+//
+//
+//
+//			unsigned int translationacces = glGetUniformLocation(shaders.Program, "model");
+//			glUniformMatrix4fv(translationacces, 1, GL_FALSE, glm::value_ptr(model));
+//			glDrawArrays(GL_TRIANGLES, 0, 36);
+//		}
+//
+//
+//		//drawing
+//		//glDrawArrays(GL_TRIANGLES, 0, 36);
+//		//glBindVertexArray();
+//
+//		glfwSwapBuffers(window);//to swap the new color for window
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
