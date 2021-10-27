@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Shader1.h" />
     <ClInclude Include="transform5.vs" />
   </ItemGroup>
   <ItemGroup>

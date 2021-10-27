@@ -26,6 +26,9 @@
     <ClInclude Include="transform5.vs">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Shader1.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Test.frag" />
