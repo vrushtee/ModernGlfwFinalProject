@@ -88,6 +88,18 @@
     <None Include="transform8.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="AmbLight1.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight1.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight2.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight2.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="1064205.png">
