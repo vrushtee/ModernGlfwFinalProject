@@ -153,6 +153,10 @@
     <None Include="AmbLight1.vs" />
     <None Include="AmbLight2.frag" />
     <None Include="AmbLight2.vs" />
+    <None Include="AmbLight3.frag" />
+    <None Include="AmbLight3.vs" />
+    <None Include="AmbLight4.frag" />
+    <None Include="AmbLight4.vs" />
     <None Include="BtmText.frag" />
     <None Include="BtmText.vs" />
     <None Include="fourBstr.frag" />

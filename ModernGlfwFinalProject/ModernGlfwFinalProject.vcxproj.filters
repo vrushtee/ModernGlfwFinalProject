@@ -100,6 +100,18 @@
     <None Include="AmbLight2.frag">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="AmbLight3.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight3.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight4.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight4.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="1064205.png">
