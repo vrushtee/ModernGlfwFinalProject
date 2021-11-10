@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Shader1.h" />
+    <ClInclude Include="shaders1.h" />
     <ClInclude Include="transform5.vs" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +158,8 @@
     <None Include="AmbLight3.vs" />
     <None Include="AmbLight4.frag" />
     <None Include="AmbLight4.vs" />
+    <None Include="AmbLight5.frag" />
+    <None Include="AmbLight5.vs" />
     <None Include="BtmText.frag" />
     <None Include="BtmText.vs" />
     <None Include="fourBstr.frag" />
