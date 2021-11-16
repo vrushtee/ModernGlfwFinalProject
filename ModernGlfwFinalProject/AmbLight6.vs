@@ -7,9 +7,11 @@ out vec3 normal;
 out vec3 fragPos;
 
 out vec3 vertexcolor;
-uniform mat4 view3;
 uniform mat4 model3;
-uniform mat4 projection1;
+uniform mat4 view3;
+uniform mat4 projection;
+uniform mat4 rotate;
+
 
 void main()  // 4 must add paranthesis
 { 
@@ -19,6 +21,6 @@ normal = normalCord;
 
 
 vertexcolor= colorpos;
-gl_Position = model3*view3*vec4(position,1.0);	
+gl_Position = model3*view3*projection*rotate*vec4(position,1.0);	
 
 } 

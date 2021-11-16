@@ -121,6 +121,18 @@
     <None Include="AmbLight5.vs">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="AmbLight6.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="AmbLight6.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform9.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform9.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="1064205.png">

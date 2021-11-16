@@ -160,6 +160,8 @@
     <None Include="AmbLight4.vs" />
     <None Include="AmbLight5.frag" />
     <None Include="AmbLight5.vs" />
+    <None Include="AmbLight6.frag" />
+    <None Include="AmbLight6.vs" />
     <None Include="BtmText.frag" />
     <None Include="BtmText.vs" />
     <None Include="fourBstr.frag" />
@@ -197,6 +199,8 @@
     <None Include="transform7.vs" />
     <None Include="transform8.frag" />
     <None Include="transform8.vs" />
+    <None Include="transform9.frag" />
+    <None Include="transform9.vs" />
     <None Include="triangletsr.frag" />
     <None Include="triangletsr.vs" />
   </ItemGroup>
