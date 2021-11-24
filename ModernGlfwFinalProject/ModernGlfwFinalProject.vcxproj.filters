@@ -18,6 +18,9 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ImplementationCode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -131,6 +134,60 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="transform9.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light11.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light11.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light24.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light24.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light25.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light25.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light21.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light21.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light111.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light111.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform10.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform10.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform11.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform11.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light26.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light26.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light28.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light28.vs">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

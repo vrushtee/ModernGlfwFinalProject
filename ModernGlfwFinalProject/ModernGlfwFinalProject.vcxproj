@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ImplementationCode.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +168,20 @@
     <None Include="fourBstr.frag" />
     <None Include="fourBstr.vs" />
     <None Include="left.frag" />
+    <None Include="Light11.frag" />
+    <None Include="Light11.vs" />
+    <None Include="Light111.frag" />
+    <None Include="Light111.vs" />
+    <None Include="Light21.frag" />
+    <None Include="Light21.vs" />
+    <None Include="Light24.frag" />
+    <None Include="Light24.vs" />
+    <None Include="Light25.frag" />
+    <None Include="Light25.vs" />
+    <None Include="Light26.frag" />
+    <None Include="Light26.vs" />
+    <None Include="Light28.frag" />
+    <None Include="Light28.vs" />
     <None Include="MultiText.frag" />
     <None Include="MultiText.vs" />
     <None Include="right.frag" />
@@ -186,6 +201,10 @@
     <None Include="transform.vs" />
     <None Include="transform1.frag" />
     <None Include="transform1.vs" />
+    <None Include="transform10.frag" />
+    <None Include="transform10.vs" />
+    <None Include="transform11.frag" />
+    <None Include="transform11.vs" />
     <None Include="transform2.frag" />
     <None Include="transform2.vs" />
     <None Include="transform3.frag" />
