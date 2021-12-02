@@ -190,6 +190,54 @@
     <None Include="Light28.vs">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Light29.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light29.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light30.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light30.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light13.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light13.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light32.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light32.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light33.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light33.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light34.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light34.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light37.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Light37.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform12.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="transform12.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="1064205.png">

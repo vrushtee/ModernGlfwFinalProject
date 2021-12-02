@@ -172,6 +172,8 @@
     <None Include="Light11.vs" />
     <None Include="Light111.frag" />
     <None Include="Light111.vs" />
+    <None Include="Light13.frag" />
+    <None Include="Light13.vs" />
     <None Include="Light21.frag" />
     <None Include="Light21.vs" />
     <None Include="Light24.frag" />
@@ -182,6 +184,18 @@
     <None Include="Light26.vs" />
     <None Include="Light28.frag" />
     <None Include="Light28.vs" />
+    <None Include="Light29.frag" />
+    <None Include="Light29.vs" />
+    <None Include="Light30.frag" />
+    <None Include="Light30.vs" />
+    <None Include="Light32.frag" />
+    <None Include="Light32.vs" />
+    <None Include="Light33.frag" />
+    <None Include="Light33.vs" />
+    <None Include="Light34.frag" />
+    <None Include="Light34.vs" />
+    <None Include="Light37.frag" />
+    <None Include="Light37.vs" />
     <None Include="MultiText.frag" />
     <None Include="MultiText.vs" />
     <None Include="right.frag" />
@@ -205,6 +219,8 @@
     <None Include="transform10.vs" />
     <None Include="transform11.frag" />
     <None Include="transform11.vs" />
+    <None Include="transform12.frag" />
+    <None Include="transform12.vs" />
     <None Include="transform2.frag" />
     <None Include="transform2.vs" />
     <None Include="transform3.frag" />
