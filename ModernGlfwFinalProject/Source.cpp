@@ -318,111 +318,111 @@
 
 //Lab 4 How to apply triangle colors from shaders
 
-//#include<GL/glew.h>
-//#include<GLFW/glfw3.h>
-//#include<iostream>
-//#include<GL\glew.h> 
-//#include"Shader.h"
-//
-//
-//
-//using namespace std;
-//
-////vertex shader coding part
-//
-//
-////fragment shader coding part
-//
-//
-//void main()
-//{
-//	GLint wid = 800; //*window variable
-//	GLint height = 800; //*window variable
-//	GLFWwindow* window; //pointer var as window that will hold address only 
-//	glfwInit();
-//
-//	if (!glfwInit())
-//	{
-//		cout << "glfw lib error"<<endl;
-//	}
-//	else
-//		cout << "glfw success"<<endl;
-//	window = glfwCreateWindow(wid, height, "Window with background color", NULL, NULL); //*assigned window variable 
-//
-//	// make the window context current
-//	glfwMakeContextCurrent(window);
-//
-//	// 2.   **************** here must add glew function use*********
-//	if (glewInit() != GLEW_OK)
-//	{
-//		cout << "fail to open glew\n";
-//
-//	}
-//	else
-//		cout << "glew works success\n";
-//	// till here glew stuff
-//
-//
-//	//vertex shader 
-//
-//
-//	//fragment shader
-//
-//
-//	//Shader linking of vertex and fragment shader
-//
-//	//Attaching shader Files 
-//	Shader shaders("Test.vs","Test.frag");
-//
-//	
-//	GLfloat vertices[] =
-//	{
-//		-0.5f, -0.5f, 0.0f,
-//		0.5f, -0.5f, 0.0f,
-//		0.0f, 0.5f, 0.0f
-//
-//
-//	};
-//
-//	GLuint VBO, VAO;//vertex buffer obj//vert array obj
-//	glGenVertexArrays(1, &VAO);
-//	glGenBuffers(1, &VBO);
-//
-//	glBindVertexArray(VAO);
-//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
-//	glEnableVertexAttribArray(0);
-//	glBindBuffer(GL_ARRAY_BUFFER, 0);
-//	glBindVertexArray(0);
-//
-//
-//
-//
-//	//gameloop
-//	while (!glfwWindowShouldClose(window))
-//	{
-//		//for the bg color
-//		glClearColor(0, 0, 0, 0); //for rgb color change
-//		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
-//
-//		//linking the shader / calling the shader
-//		shaders.Use();
-//
-//		//6 must pass parameter vao to see visibility of drawing 
-//		glBindVertexArray(VAO);
-//
-//		//drawing
-//		glDrawArrays(GL_TRIANGLES, 0, 3);
-//		//glBindVertexArray();
-//
-//		glfwSwapBuffers(window);//to swap the new color for window
-//		glfwPollEvents();
-//	}
-//	glDeleteVertexArrays(1, &VAO);
-//	glDeleteBuffers(1, &VBO);
-//	glfwTerminate();
-//}
+#include<GL/glew.h>
+#include<GLFW/glfw3.h>
+#include<iostream>
+#include<GL\glew.h> 
+#include"Shader.h"
+
+
+
+using namespace std;
+
+//vertex shader coding part
+
+
+//fragment shader coding part
+
+
+void main()
+{
+	GLint wid = 800; //*window variable
+	GLint height = 800; //*window variable
+	GLFWwindow* window; //pointer var as window that will hold address only 
+	glfwInit();
+
+	if (!glfwInit())
+	{
+		cout << "glfw lib error"<<endl;
+	}
+	else
+		cout << "glfw success"<<endl;
+	window = glfwCreateWindow(wid, height, "Window with background color", NULL, NULL); //*assigned window variable 
+
+	// make the window context current
+	glfwMakeContextCurrent(window);
+
+	// 2.   **************** here must add glew function use*********
+	if (glewInit() != GLEW_OK)
+	{
+		cout << "fail to open glew\n";
+
+	}
+	else
+		cout << "glew works success\n";
+	// till here glew stuff
+
+
+	//vertex shader 
+
+
+	//fragment shader
+
+
+	//Shader linking of vertex and fragment shader
+
+	//Attaching shader Files 
+	Shader shaders("Test.vs","Test.frag");
+
+	
+	GLfloat vertices[] =
+	{
+		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
+		0.0f, 0.5f, 0.0f
+
+
+	};
+
+	GLuint VBO, VAO;//vertex buffer obj//vert array obj
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+
+
+
+
+	//gameloop
+	while (!glfwWindowShouldClose(window))
+	{
+		//for the bg color
+		glClearColor(0, 0, 0, 0); //for rgb color change
+		glClear(GL_COLOR_BUFFER_BIT);//to clear the buffer
+
+		//linking the shader / calling the shader
+		shaders.Use();
+
+		//6 must pass parameter vao to see visibility of drawing 
+		glBindVertexArray(VAO);
+
+		//drawing
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+		//glBindVertexArray();
+
+		glfwSwapBuffers(window);//to swap the new color for window
+		glfwPollEvents();
+	}
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glfwTerminate();
+}
 
 
 
@@ -19983,147 +19983,147 @@
 
 
 
-#include<GL/glew.h>
-#include<GLFW/glfw3.h>
-#include<iostream>
-#include<GL\glew.h> 
-#include"Shader1.h"
-#include"SOIL2/SOIL2.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
-using namespace std;
-
-
-void main()
-{
-	GLint wid = 2000;
-	GLint height1 = 1500;
-	GLFWwindow* window;
-	glfwInit();
-
-	if (!glfwInit())
-	{
-		cout << "glfw lib error" << endl;
-	}
-	else
-		cout << "glfw success" << endl;
-	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); 
-
-	glfwMakeContextCurrent(window);
-
-	if (glewInit() != GLEW_OK)
-	{
-		cout << "fail to open glew\n";
-
-	}
-	else
-		cout << "glew works success\n";
-
-	glViewport(0, 0, wid, height1);
-
-	glEnable(GL_DEPTH_TEST);
-
-	Shader shaders3("transform12.vs", "transform12.frag");
-
-	GLfloat vertices3[] =
-	{
-		//top						
-		-0.1f, 0.1f, -0.1f,		
-		 0.1f, 0.1f, -0.1f,		
-		 0.1f, 0.1f,  0.1f,		
-		 0.1f, 0.1f,  0.1f,		
-		-0.1f, 0.1f,  0.1f,		
-		-0.1f, 0.1f, -0.1f,		
-
-		//back
-		-0.1f, -0.1f, -0.1f,	
-		 0.1f, -0.1f, -0.1f,	
-		 0.1f,  0.1f, -0.1f,	
-		 0.1f,  0.1f, -0.1f,	
-		-0.1f,  0.1f, -0.1f,	
-		-0.1f, -0.1f, -0.1f,	
-
-		//front
-		-0.1f, -0.1f, 0.1f,		
-		 0.1f, -0.1f, 0.1f,		
-		 0.1f,  0.1f, 0.1f,		
-		 0.1f,  0.1f, 0.1f,		
-		-0.1f,  0.1f, 0.1f,		
-		-0.1f, -0.1f, 0.1f,		
-
-		//left
-		-0.1f,  0.1f,  0.1f,	
-		-0.1f,  0.1f, -0.1f,	
-		-0.1f, -0.1f, -0.1f,	
-		-0.1f, -0.1f, -0.1f,	
-		-0.1f, -0.1f,  0.1f,	
-		-0.1f,  0.1f,  0.1f,	
-
-		//right
-		0.1f,  0.1f,  0.1f,		
-		0.1f,  0.1f, -0.1f,		
-		0.1f, -0.1f, -0.1f,		
-		0.1f, -0.1f, -0.1f,		
-		0.1f, -0.1f,  0.1f,		
-		0.1f,  0.1f,  0.1f,		
-
-		//bottom
-		-0.1f, -0.1f, -0.1f,	
-		 0.1f, -0.1f, -0.1f,	
-		 0.1f, -0.1f,  0.1f,	
-		 0.1f, -0.1f,  0.1f,	
-		-0.1f, -0.1f,  0.1f,	
-		-0.1f, -0.1f, -0.1f
-		//end
-	};
-
-	GLuint VBO, VAO;
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-
-
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices3), vertices3, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
-	glEnableVertexAttribArray(0);
-
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-
-	
-	while (!glfwWindowShouldClose(window))
-	{
-
-		glClearColor(0, 0, 0, 0); 
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		shaders3.Use();
-
-		glm::mat4 model3 = glm::mat4(1.0f);
-		model3 = glm::translate(model3, glm::vec3(0.0, -0.2, 0.0));
-		unsigned int translationacces3 = glGetUniformLocation(shaders3.Program, "model3");
-		glUniformMatrix4fv(translationacces3, 1, GL_FALSE, glm::value_ptr(model3));
-
-		glm::mat4 view3 = glm::mat4(1.0f);
-		view3 = glm::rotate(view3, (float)glfwGetTime() * glm::radians(-55.0f), glm::vec3(1.0f, 1.0f, -1.0f));
-		unsigned int rotateacces3 = glGetUniformLocation(shaders3.Program, "view3");
-		glUniformMatrix4fv(rotateacces3, 1, GL_FALSE, glm::value_ptr(view3));
-
-		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-		glBindVertexArray(0);
-
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-	}
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glfwTerminate();
-}
+//#include<GL/glew.h>
+//#include<GLFW/glfw3.h>
+//#include<iostream>
+//#include<GL\glew.h> 
+//#include"Shader1.h"
+//#include"SOIL2/SOIL2.h"
+//#include <glm/glm.hpp>
+//#include <glm/gtc/matrix_transform.hpp>
+//#include <glm/gtc/type_ptr.hpp>
+//
+//using namespace std;
+//
+//
+//void main()
+//{
+//	GLint wid = 2000;
+//	GLint height1 = 1500;
+//	GLFWwindow* window;
+//	glfwInit();
+//
+//	if (!glfwInit())
+//	{
+//		cout << "glfw lib error" << endl;
+//	}
+//	else
+//		cout << "glfw success" << endl;
+//	window = glfwCreateWindow(wid, height1, "Window with background color", NULL, NULL); 
+//
+//	glfwMakeContextCurrent(window);
+//
+//	if (glewInit() != GLEW_OK)
+//	{
+//		cout << "fail to open glew\n";
+//
+//	}
+//	else
+//		cout << "glew works success\n";
+//
+//	glViewport(0, 0, wid, height1);
+//
+//	glEnable(GL_DEPTH_TEST);
+//
+//	Shader shaders3("transform12.vs", "transform12.frag");
+//
+//	GLfloat vertices3[] =
+//	{
+//		//top						
+//		-0.1f, 0.1f, -0.1f,		
+//		 0.1f, 0.1f, -0.1f,		
+//		 0.1f, 0.1f,  0.1f,		
+//		 0.1f, 0.1f,  0.1f,		
+//		-0.1f, 0.1f,  0.1f,		
+//		-0.1f, 0.1f, -0.1f,		
+//
+//		//back
+//		-0.1f, -0.1f, -0.1f,	
+//		 0.1f, -0.1f, -0.1f,	
+//		 0.1f,  0.1f, -0.1f,	
+//		 0.1f,  0.1f, -0.1f,	
+//		-0.1f,  0.1f, -0.1f,	
+//		-0.1f, -0.1f, -0.1f,	
+//
+//		//front
+//		-0.1f, -0.1f, 0.1f,		
+//		 0.1f, -0.1f, 0.1f,		
+//		 0.1f,  0.1f, 0.1f,		
+//		 0.1f,  0.1f, 0.1f,		
+//		-0.1f,  0.1f, 0.1f,		
+//		-0.1f, -0.1f, 0.1f,		
+//
+//		//left
+//		-0.1f,  0.1f,  0.1f,	
+//		-0.1f,  0.1f, -0.1f,	
+//		-0.1f, -0.1f, -0.1f,	
+//		-0.1f, -0.1f, -0.1f,	
+//		-0.1f, -0.1f,  0.1f,	
+//		-0.1f,  0.1f,  0.1f,	
+//
+//		//right
+//		0.1f,  0.1f,  0.1f,		
+//		0.1f,  0.1f, -0.1f,		
+//		0.1f, -0.1f, -0.1f,		
+//		0.1f, -0.1f, -0.1f,		
+//		0.1f, -0.1f,  0.1f,		
+//		0.1f,  0.1f,  0.1f,		
+//
+//		//bottom
+//		-0.1f, -0.1f, -0.1f,	
+//		 0.1f, -0.1f, -0.1f,	
+//		 0.1f, -0.1f,  0.1f,	
+//		 0.1f, -0.1f,  0.1f,	
+//		-0.1f, -0.1f,  0.1f,	
+//		-0.1f, -0.1f, -0.1f
+//		//end
+//	};
+//
+//	GLuint VBO, VAO;
+//	glGenVertexArrays(1, &VAO);
+//	glGenBuffers(1, &VBO);
+//
+//
+//	glBindVertexArray(VAO);
+//	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices3), vertices3, GL_STATIC_DRAW);
+//	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+//	glEnableVertexAttribArray(0);
+//
+//
+//	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindVertexArray(0);
+//
+//	
+//	while (!glfwWindowShouldClose(window))
+//	{
+//
+//		glClearColor(0, 0, 0, 0); 
+//		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//
+//		shaders3.Use();
+//
+//		glm::mat4 model3 = glm::mat4(1.0f);
+//		model3 = glm::translate(model3, glm::vec3(0.0, -0.2, 0.0));
+//		unsigned int translationacces3 = glGetUniformLocation(shaders3.Program, "model3");
+//		glUniformMatrix4fv(translationacces3, 1, GL_FALSE, glm::value_ptr(model3));
+//
+//		glm::mat4 view3 = glm::mat4(1.0f);
+//		view3 = glm::rotate(view3, (float)glfwGetTime() * glm::radians(-55.0f), glm::vec3(1.0f, 1.0f, -1.0f));
+//		unsigned int rotateacces3 = glGetUniformLocation(shaders3.Program, "view3");
+//		glUniformMatrix4fv(rotateacces3, 1, GL_FALSE, glm::value_ptr(view3));
+//
+//		glBindVertexArray(VAO);
+//		glDrawArrays(GL_TRIANGLES, 0, 36);
+//		glBindVertexArray(0);
+//
+//		glfwSwapBuffers(window);
+//		glfwPollEvents();
+//	}
+//	glDeleteVertexArrays(1, &VAO);
+//	glDeleteBuffers(1, &VBO);
+//	glfwTerminate();
+//}
 
 
 
